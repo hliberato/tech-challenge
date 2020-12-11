@@ -20,9 +20,37 @@ export default {
       validator: (s) => ['large', 'medium', 'small', 'mini'].includes(s)
     }
   },
+  data () {
+    return {
+      icons: [
+        'abra',
+        'bellsprout',
+        'caterpie',
+        'charmander',
+        'dratini',
+        'eevee',
+        'jigglypuff',
+        'mankey',
+        'meowth',
+        'mew',
+        'pidgey',
+        'pikachu-2',
+        'psyduck',
+        'rattata',
+        'snorlax',
+        'squirtle',
+        'venonat',
+        'weedle',
+        'zubat'
+      ]
+    }
+  },
   computed: {
     src () {
-      return require(`@/assets/icons/${this.name || 'pokeball'}.svg`)
+      return require(`@/assets/icons/${this.name || this.getSortedIcon}.svg`)
+    },
+    getSortedIcon () {
+      return this.icons[Math.floor(Math.random() * this.icons.length)]
     }
   }
 }

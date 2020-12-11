@@ -9,7 +9,11 @@ import {
   Footer,
   Button,
   Select,
-  Option
+  Option,
+  Loading,
+  Card,
+  Row,
+  Col
 } from 'element-ui'
 
 locale.use(lang)
@@ -21,3 +25,7 @@ Vue.use(Footer)
 Vue.use(Button)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Loading)
+Vue.use(Card)
+Vue.use(Row)
+Vue.use(Col)

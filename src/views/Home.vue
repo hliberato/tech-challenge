@@ -9,7 +9,7 @@
         class="flex cursor-pointer home-container__header"
         @click="returnToHome"
       >
-        <pokemon-icon :size="isAtSearchForm ? 'large' : 'small'" />
+        <pokemon-icon :size="isAtSearchForm ? 'large' : 'small'" name="pokeball" />
         <h1>
           PokeGames Search!
         </h1>

@@ -1,8 +1,7 @@
 <template>
   <div class="search-form flex mt-80">
     <el-select
-      v-model="selectedGeneration"
-      :loading="loading"
+      v-model="selectedGenerationId"
       reserve-keyword
       placeholder="Please select a generation"
       class="search-form__select w100"
@@ -28,14 +27,15 @@
 
 <script>
 export default {
+  name: 'SearchForm',
   data () {
     return {
       generations: [],
-      selectedGeneration: '',
-      loading: false
+      selectedGenerationId: undefined
     }
   },
-  mounted () {
+  beforeMount () {
+    const loading = this.$loading()
     this.$api.getGenerations()
       .then(response => {
         this.generations = response.results.map(generation => {
@@ -49,10 +49,18 @@ export default {
           return generation
         })
       })
+      .finally(() => {
+        loading.close()
+      })
   },
   methods: {
     searchGames () {
-      if (this.selectedGeneration) this.$api.getVersionGroupsByGenerationId(this.selectedGeneration)
+      if (this.selectedGenerationId) {
+        this.$router.push({
+          name: 'SearchResults',
+          query: { generation: this.selectedGenerationId }
+        })
+      }
     }
   }
 }
