@@ -3,15 +3,13 @@ import Vue from 'vue'
 import http from '../plugins/axios'
 
 const getGames = async (generationId) => {
-  let versionGroups = []
   let gamesVersions = []
   for (let index = 1; index < generationId + 1; index++) {
-    const versionGroup = await getVersionGroupsByGenerationId(index)
-    versionGroups = [...versionGroups, ...versionGroup]
-  }
-  for (const versionGroup of versionGroups) {
-    const version = await getVersionsByVersionGroupName(versionGroup.name)
-    gamesVersions = [...gamesVersions, ...version]
+    const generation = await getByGenerationId(index)
+    for (const versionGroup of generation.versionGroups) {
+      const version = await getVersionsByVersionGroupName(versionGroup.name)
+      gamesVersions = [...gamesVersions, ...version]
+    }
   }
   return gamesVersions
 }
@@ -22,10 +20,15 @@ const getGenerations = () => {
     .then(res => res.data)
 }
 
-const getVersionGroupsByGenerationId = async (generationId) => {
+const getByGenerationId = async (generationId) => {
   return http
     .get('/generation/' + generationId)
-    .then(res => res.data?.version_groups)
+    .then(res => {
+      return {
+        versionGroups: res.data?.version_groups,
+        pokemonSpecies: res.data?.pokemon_species
+      }
+    })
 }
 
 const getVersionsByVersionGroupName = async (versionGroupName) => {

@@ -1,10 +1,10 @@
 <template>
-  <div class="search-form flex mt-80">
+  <div class="search-form flex">
     <el-select
       v-model="selectedGenerationId"
       reserve-keyword
       placeholder="Please select a generation"
-      class="search-form__select w100"
+      class="search-home__select w100"
     >
       <el-option
         v-for="generation in generations"
@@ -70,7 +70,6 @@ export default {
   @import '../styles/_media.scss';
 
   .search-form {
-    max-width: 758px;
     margin-left: auto;
     margin-right: auto;
     @include tablet-and-up {
@@ -80,8 +79,6 @@ export default {
       }
     }
     @include mobile-only {
-      margin-top: 52px;
-      flex-direction: column;
       &__select  {
         margin-bottom: 16px;
       }

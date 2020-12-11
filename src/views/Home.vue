@@ -1,7 +1,7 @@
 <template>
   <el-container class="home-container">
     <el-header
-      :class="[{'center': isAtSearchForm}, isAtSearchForm ? 'home-container--home' : 'home-container--content']"
+      :class="[{'center': isAtSearchHome}, isAtSearchHome ? 'home-container--home' : 'home-container--content']"
       class="flex"
       height="auto"
     >
@@ -9,11 +9,12 @@
         class="flex cursor-pointer home-container__header"
         @click="returnToHome"
       >
-        <pokemon-icon :size="isAtSearchForm ? 'large' : 'small'" name="pokeball" />
+        <pokemon-icon :size="isAtSearchHome ? 'large' : 'small'" name="pokeball" />
         <h1>
           PokeGames Search!
         </h1>
       </div>
+      <search-form />
     </el-header>
     <el-main>
       <router-view/>
@@ -25,16 +26,19 @@
 </template>
 
 <script>
+import SearchForm from '../components/SearchForm'
+
 export default {
   name: 'Home',
+  components: { SearchForm },
   computed: {
-    isAtSearchForm () {
-      return this.$route.name === 'SearchForm'
+    isAtSearchHome () {
+      return this.$route.name === 'SearchHome'
     }
   },
   methods: {
     returnToHome () {
-      if (this.isAtSearchForm) this.$router.push({ name: 'Home' })
+      if (!this.isAtSearchHome) this.$router.push({ name: 'SearchHome' })
     }
   }
 }

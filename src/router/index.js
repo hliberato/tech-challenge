@@ -10,8 +10,8 @@ const routes = [
     children: [
       {
         path: '/',
-        name: 'SearchForm',
-        component: () => import(/* webpackChunkName: "search-form" */ '../components/SearchForm.vue')
+        name: 'SearchHome',
+        component: () => import(/* webpackChunkName: "search-home" */ '../components/SearchHome.vue')
       },
       {
         path: '/search',
