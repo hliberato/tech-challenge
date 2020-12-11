@@ -39,6 +39,7 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    generations: state => state.generations
+    generations: state => state.generations,
+    generationByName: state => name => state.generations.find(g => g.name === name)
   }
 })

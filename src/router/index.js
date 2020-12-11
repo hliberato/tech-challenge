@@ -10,18 +10,18 @@ const routes = [
     children: [
       {
         path: '/',
-        name: 'Home',
+        name: 'home',
         component: () => import(/* webpackChunkName: "home-view" */ '../views/Home.vue')
       },
       {
         path: '/generations',
-        name: 'Generations',
+        name: 'generations',
         component: () => import(/* webpackChunkName: "generations-view" */ '../views/Generations.vue')
       },
       {
-        path: '/search',
-        name: 'SearchResults',
-        component: () => import(/* webpackChunkName: "search-results" */ '../components/SearchResults.vue')
+        path: '/generations/:generationName',
+        name: 'generation',
+        component: () => import(/* webpackChunkName: "generation-view" */ '../views/Generation.vue')
       }
     ]
   }

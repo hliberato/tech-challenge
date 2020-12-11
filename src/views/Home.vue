@@ -10,7 +10,7 @@
       </el-link>
       to bring to you a <br> versatile tool to browse all Pokemon games.
     </p>
-    <el-button class="home-view__button" type="primary" @click="$router.push({ name: 'Generations' })">
+    <el-button class="home-view__button" type="primary" @click="$router.push({ name: 'generations' })">
       <pokemon-icon size="small" name="compass" class="mr-8" />
       Browse by generations
     </el-button>

@@ -12,10 +12,14 @@
     </el-header>
     <el-main>
       <el-breadcrumb v-if="!isAtHome" separator="/">
-        <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
-        <el-breadcrumb-item><a href="/">promotion management</a></el-breadcrumb-item>
-        <el-breadcrumb-item>promotion list</el-breadcrumb-item>
-        <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ name: 'home' }">HOME</el-breadcrumb-item>
+        <el-breadcrumb-item
+          v-for="(route, index) in currentRoute"
+          :to="{ name: route }"
+          :key="index"
+        >
+          {{ route.toUpperCase() }}
+        </el-breadcrumb-item>
       </el-breadcrumb>
       <router-view/>
     </el-main>
@@ -27,12 +31,16 @@ export default {
   name: 'Container',
   computed: {
     isAtHome () {
-      return this.$route.name === 'Home'
+      return this.$route.name === 'home'
+    },
+    currentRoute () {
+      const path = this.$route.path.replace('%20', ' ').slice(1)
+      return path.split('/')
     }
   },
   methods: {
     returnToHome () {
-      if (!this.isAtSearchHome) this.$router.push({ name: 'Home' })
+      if (!this.isAtSearchHome) this.$router.push({ name: 'home' })
     }
   }
 }
