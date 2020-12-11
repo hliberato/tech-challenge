@@ -13,8 +13,8 @@ import './plugins/element-ui'
 import './styles/index.scss'
 
 // global
-import PokeIcon from './components/PokeIcon'
-Vue.component('poke-icon', PokeIcon)
+import PokeIcon from './components/PokemonIcon'
+Vue.component('pokemon-icon', PokeIcon)
 
 Vue.config.productionTip = false
 
