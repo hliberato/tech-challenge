@@ -13,7 +13,6 @@ const getGames = async (generationId) => {
     const version = await getVersionsByVersionGroupName(versionGroup.name)
     gamesVersions = [...gamesVersions, ...version]
   }
-
   return gamesVersions
 }
 

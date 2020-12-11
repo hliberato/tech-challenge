@@ -15,12 +15,12 @@
       </el-option>
     </el-select>
     <el-button
-      type="info"
+      type="danger"
       icon="el-icon-search"
       plain
       @click="searchGames"
     >
-      Search form games
+      Search!
     </el-button>
   </div>
 </template>

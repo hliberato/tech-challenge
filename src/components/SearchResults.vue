@@ -3,8 +3,10 @@
     <el-row :gutter="20">
       <el-col v-for="(game, index) in games" :key="index" :xs="24" :sm="12" :md="8">
         <el-card>
-          <pokemon-icon />
-        {{ game.name }}
+          <pokemon-icon class="search-results__icon pb-12" />
+          <h3>
+            POKEMON {{ game.name.toUpperCase() }}
+          </h3>
         </el-card>
       </el-col>
     </el-row>
@@ -39,5 +41,8 @@ export default {
 
 <style lang="scss">
   .search-results {
+    &__icon {
+      margin: auto;
+    }
   }
 </style>
