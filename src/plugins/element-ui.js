@@ -13,7 +13,10 @@ import {
   Loading,
   Card,
   Row,
-  Col
+  Col,
+  Breadcrumb,
+  BreadcrumbItem,
+  Link
 } from 'element-ui'
 
 locale.use(lang)
@@ -29,3 +32,6 @@ Vue.use(Loading)
 Vue.use(Card)
 Vue.use(Row)
 Vue.use(Col)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+Vue.use(Link)

@@ -58,8 +58,10 @@ export default {
 
 <style lang="scss" scoped>
   .pokemon-icon {
+    display: inline-block;
+    vertical-align: text-bottom;
     &__large {
-      width: 64px;
+      width: 160px;
     }
     &__medium {
       width: 48px;

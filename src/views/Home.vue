@@ -1,44 +1,68 @@
 <template>
-  <el-container class="home-container">
-    <el-header
-      :class="[{'center': isAtSearchHome}, isAtSearchHome ? 'home-container--home' : 'home-container--content']"
-      class="flex"
-      height="auto"
-    >
-      <div
-        class="flex cursor-pointer home-container__header"
-        @click="returnToHome"
-      >
-        <pokemon-icon :size="isAtSearchHome ? 'large' : 'small'" name="pokeball" />
-        <h1>
-          PokeGames Search!
-        </h1>
-      </div>
-      <search-form />
-    </el-header>
-    <el-main>
-      <router-view/>
-    </el-main>
-    <el-footer class="text-center">
-      © PokeGames Search! - 2020
-    </el-footer>
-  </el-container>
+  <div class="home-view">
+    <h1 class="mb-8">
+      Welcome to PokeGames Generations!
+    </h1>
+    <p class="mb-64">
+      We use the powerful
+      <el-link href="https://pokeapi.co/" type="primary" target="_blank">
+        PokeApi
+      </el-link>
+      to bring to you a <br> versatile tool to browse all Pokemon games.
+    </p>
+    <el-button class="home-view__button" type="primary" @click="$router.push({ name: 'Generations' })">
+      <pokemon-icon size="small" name="compass" class="mr-8" />
+      Browse by generations
+    </el-button>
+    <el-button class="home-view__button" @click="goToGithub">
+      <pokemon-icon size="small" name="pokestop-3" class="mr-8" />
+      View on Github
+    </el-button>
+    <el-row :gutter="40" class="mt-64">
+      <el-col :span="8" class="mb-16">
+        <h2>Search</h2>
+      </el-col>
+      <el-col :span="8" class="mb-16">
+        <h2>View</h2>
+      </el-col>
+      <el-col :span="8" class="mb-16">
+        <h2>Filter</h2>
+      </el-col>
+      <el-col :span="8" class="mb-12">
+        <pokemon-icon size="small" class="mr-8" />
+        Search games by generations
+      </el-col>
+      <el-col :span="8" class="mb-12">
+        <pokemon-icon size="small" class="mr-8" />
+        See Pokemon details
+      </el-col>
+      <el-col :span="8" class="mb-12">
+        <pokemon-icon size="small" class="mr-8" />
+        Filter by Pokemon types
+      </el-col>
+      <el-col :span="8" class="mb-12">
+        <pokemon-icon size="small" class="mr-8" />
+        Search for maps and routes
+      </el-col>
+      <el-col :span="8" class="mb-12">
+        <pokemon-icon size="small" class="mr-8" />
+        Browse abilities and evolutions
+      </el-col>
+      <el-col :span="8" class="mb-12">
+        <pokemon-icon size="small" class="mr-8" />
+        Filter by Pokemon version
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
-import SearchForm from '../components/SearchForm'
 
 export default {
   name: 'Home',
-  components: { SearchForm },
-  computed: {
-    isAtSearchHome () {
-      return this.$route.name === 'SearchHome'
-    }
-  },
   methods: {
-    returnToHome () {
-      if (!this.isAtSearchHome) this.$router.push({ name: 'SearchHome' })
+    goToGithub () {
+      window.open('https://github.com/hliberato/tech-challenge', '_blank')
     }
   }
 }
@@ -46,50 +70,23 @@ export default {
 
 <style lang="scss">
   @import '../styles/_media.scss';
+  @import '../styles/_colors.scss';
 
-  .home-container {
-    &__header {
-      width: 100%;
-      min-height: 60px;
-      align-items: center;
+  .home-view {
+    width: 620px;
+    margin: 0 auto;
+    text-align: center;
+    &__button span {
+      display: flex;
       justify-content: center;
+      align-items: center;
+      font-size: 1.17rem;
     }
-    &--content {
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
-      h1 {
-        margin-left: 12px;
-      }
-      .home-container__header {
-        min-height: 60px;
-      }
+    h1, h3 {
+      font-weight: 400 !important;
     }
-    &--home {
-      font-size: 2rem;
-    }
-    @include tablet-and-up {
-      &--home {
-        margin-top: 12rem;
-        h1 {
-          margin-left: 20px;
-        }
-      }
-    }
-    @include mobile-only {
-      &--home {
-        margin-top: 6rem;
-        .home-container__header {
-          flex-direction: column;
-        }
-        h1 {
-          margin-top: 20px;
-        }
-      }
-      &__title {
-        margin: 16px 0 0;
-      }
-      &__header {
-        text-align: center;
-      }
+    h2 {
+      color: $--color-primary;
     }
   }
 </style>

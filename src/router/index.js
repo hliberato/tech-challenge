@@ -6,12 +6,17 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
+    component: () => import(/* webpackChunkName: "container-view" */ '../views/Container.vue'),
     children: [
       {
         path: '/',
-        name: 'SearchHome',
-        component: () => import(/* webpackChunkName: "search-home" */ '../components/SearchHome.vue')
+        name: 'Home',
+        component: () => import(/* webpackChunkName: "home-view" */ '../views/Home.vue')
+      },
+      {
+        path: '/generations',
+        name: 'Generations',
+        component: () => import(/* webpackChunkName: "generations-view" */ '../views/Generations.vue')
       },
       {
         path: '/search',
