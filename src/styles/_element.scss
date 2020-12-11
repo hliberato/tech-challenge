@@ -1,0 +1,13 @@
+.el-header {
+  &__home {
+    margin-top: 10rem;
+    font-size: 2rem;
+  }
+  &__content {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  }
+}
+.el-footer {
+  background-color: $--background-color-base;
+  line-height: 60px;
+}
