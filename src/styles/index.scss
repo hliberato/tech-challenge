@@ -1,6 +1,7 @@
 @import '~modern-css-reset/dist/reset.min.css';
 @import "./_colors.scss";
 @import "./_helpers.scss";
+@import "./media.scss";
 
 // ElementUI
 $--font-path: '~element-ui/lib/theme-chalk/fonts';

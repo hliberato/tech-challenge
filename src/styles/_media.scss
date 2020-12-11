@@ -1,0 +1,26 @@
+$mq-mobile: 568px !default;
+$mq-tablet: 768px !default;
+
+@mixin mobile-only {
+	@media (max-width : $mq-mobile) {
+		@content;
+	}
+}
+
+@mixin tablet-only {
+	@media (min-width : $mq-mobile + 1) and (max-width : $mq-tablet) {
+		@content;
+	}
+}
+
+@mixin tablet-and-up {
+	@media (min-width : $mq-mobile + 1) {
+		@content;
+	}
+}
+
+@mixin desktop-only {
+	@media (min-width : $mq-tablet + 1) {
+		@content;
+	}
+}
