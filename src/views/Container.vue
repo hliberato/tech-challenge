@@ -11,7 +11,7 @@
       </h1>
     </el-header>
     <el-main>
-      <el-breadcrumb v-if="!isAtHome" separator="/">
+      <el-breadcrumb v-if="!isAtHome" class="mt-20 mb-20" separator="/">
         <el-breadcrumb-item :to="{ name: 'home' }">HOME</el-breadcrumb-item>
         <el-breadcrumb-item
           v-for="(route, index) in currentRoute"

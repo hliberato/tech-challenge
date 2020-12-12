@@ -6,6 +6,11 @@ export default {
     return http
       .get('/generation')
       .then(res => res.data)
+  },
+  getGenerationByName (generationName) {
+    return http
+      .get('/generation/' + generationName)
+      .then(res => res.data)
   }
 }
 
