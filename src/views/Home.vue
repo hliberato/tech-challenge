@@ -69,7 +69,6 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '../styles/_media.scss';
   @import '../styles/_colors.scss';
 
   .home-view {

@@ -11,7 +11,7 @@
       </h1>
     </el-header>
     <el-main>
-      <el-breadcrumb v-if="!isAtHome" class="mt-20 mb-20" separator="/">
+      <el-breadcrumb v-if="!isAtHome" class="mt-20 mb-32" separator="/">
         <el-breadcrumb-item :to="{ name: 'home' }">HOME</el-breadcrumb-item>
         <el-breadcrumb-item
           v-for="(route, index) in currentRoute"
@@ -21,7 +21,9 @@
           {{ route.toUpperCase() }}
         </el-breadcrumb-item>
       </el-breadcrumb>
-      <router-view/>
+      <transition name="fade">
+        <router-view/>
+      </transition>
     </el-main>
   </el-container>
 </template>

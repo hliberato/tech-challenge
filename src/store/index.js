@@ -7,55 +7,71 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    generations: [],
-    games: []
+    generations: []
   },
   mutations: {
     setGenerations (state, generations) {
-      state.generations = generations.map(generation => {
-        const name = generation.name.replace('-', ' ')
-        generation.name = name.toUpperCase()
-        return generation
-      })
+      state.generations = generations
+    },
+    setGenerationGames (state, { generationId, games }) {
+      const generation = state.generations.find(g => g.id === generationId)
+      generation.games = games
     }
   },
   actions: {
-    fetchGenerations ({ commit, dispatch }) {
+    fetchGenerations ({ dispatch }) {
       return new Promise((resolve, reject) => {
         GenerationService
           .getGenerations()
           .then(response => {
-            const generationPromise = []
-            for (const generation of response.results) {
-              generationPromise.push(dispatch('getGenerationByName', generation.name))
-            }
-            Promise.all(generationPromise)
-              .then(response => {
-                commit('setGenerations', response)
-                resolve()
+            dispatch('getGenerationsDetails', response.results)
+              .then(generations => {
+                dispatch('getGenerationsGames', generations)
+                  .then(() => resolve())
+                  .catch(err => reject(err))
               })
               .catch(err => reject(err))
           })
-          .catch(err => {
-            reject(err)
-          })
+          .catch(err => reject(err))
       })
     },
-    getGenerationByName ({ commit }, generationName) {
+    getGenerationsDetails ({ commit }, generations) {
       return new Promise((resolve, reject) => {
-        GenerationService
-          .getGenerationByName(generationName)
-          .then(response => resolve(response))
+        const generationPromises = []
+        for (const generation of generations) {
+          generationPromises.push(GenerationService.getGenerationByName(generation.name))
+        }
+        Promise.all(generationPromises)
+          .then(generations => {
+            commit('setGenerations', generations)
+            resolve(generations)
+          })
           .catch(err => reject(err))
+      })
+    },
+    getGenerationsGames ({ commit }, generations) {
+      return new Promise((resolve, reject) => {
+        for (const generation of generations) {
+          GenerationService
+            .getGenerationGames(generation)
+            .then(games => {
+              commit('setGenerationGames', { generationId: generation.id, games })
+              resolve(games)
+            })
+            .catch(err => reject(err))
+        }
       })
     }
   },
   getters: {
     generations: state => {
+      if (!state.generations.length) return []
       const generations = state.generations.map((generation, index, generations) => {
-        generation.pokemon_total = generations
-          .slice(0, index + 1)
-          .reduce((acc, currentGeneration) => acc + currentGeneration.pokemon_species.length, 0)
+        generation.display_name = generation.name.replace('-', ' ').toUpperCase()
+        generation.total_pokemons =
+          generations
+            .slice(0, index + 1)
+            .reduce((acc, currentGeneration) => acc + currentGeneration.pokemon_species.length, 0)
         return generation
       })
       return generations

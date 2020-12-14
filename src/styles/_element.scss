@@ -13,5 +13,7 @@
 
 .el-card {
   margin-bottom: 40px;
-  border-left: 6px solid $--color-primary;
+  &__body {
+    border-left: 6px solid $--color-primary;
+  }
 }
