@@ -18,11 +18,13 @@ export default {
       type: String,
       default: 'medium',
       validator: (s) => ['large', 'medium', 'small', 'mini'].includes(s)
-    }
+    },
+    randonIcon: Boolean,
+    randonPokemon: Boolean
   },
   data () {
     return {
-      icons: [
+      pokemons: [
         'abra',
         'bellsprout',
         'caterpie',
@@ -42,6 +44,19 @@ export default {
         'venonat',
         'weedle',
         'zubat'
+      ],
+      icons: [
+        'action-1',
+        'blue-team',
+        'camera',
+        'egg-incubator-1',
+        'hyper-potion',
+        'instinct-1',
+        'new',
+        'pokestop-1',
+        'red-team',
+        'valor-1',
+        'yellow-team'
       ]
     }
   },
@@ -50,7 +65,13 @@ export default {
       return require(`@/assets/icons/${this.name || this.getSortedIcon}.svg`)
     },
     getSortedIcon () {
-      return this.icons[Math.floor(Math.random() * this.icons.length)]
+      if (this.randonIcon) {
+        return this.icons[Math.floor(Math.random() * this.icons.length)]
+      } else if (this.randonPokemon) {
+        return this.pokemons[Math.floor(Math.random() * this.pokemons.length)]
+      } else {
+        return 'pokeball'
+      }
     }
   }
 }
@@ -58,8 +79,10 @@ export default {
 
 <style lang="scss" scoped>
   .pokemon-icon {
+    display: inline-block;
+    vertical-align: text-bottom;
     &__large {
-      width: 64px;
+      width: 160px;
     }
     &__medium {
       width: 48px;
