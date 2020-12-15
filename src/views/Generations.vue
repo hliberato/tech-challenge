@@ -2,7 +2,7 @@
   <div class="generations-view">
     <el-row :gutter="40">
       <el-col v-for="(generation, index) in generations" :key="index" :xs="24" :md="8" :sm="12">
-        <generation-card :generation="generation" />
+        <generation-card :generation-name="generation.name" />
       </el-col>
     </el-row>
   </div>

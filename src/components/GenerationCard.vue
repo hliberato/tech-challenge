@@ -5,11 +5,19 @@
         <h3 class="mb-8">
           {{ generation.display_name }}
         </h3>
-        <p>Games: {{ generation.games.length }}</p>
+        <p>
+          Games:
+          <span v-if="hasGames">
+            {{ generation.games.length }}
+          </span>
+          <span v-else>
+            Fetching... <i class="el-icon-loading"></i>
+          </span>
+        </p>
         <p>New pokemons: {{ generation.pokemon_species.length }} </p>
         <p>Total pokemons: {{ generation.total_pokemons }}</p>
       </span>
-      <pokemon-icon />
+      <pokemon-icon randon-pokemon />
     </div>
   </el-card>
 </template>
@@ -18,17 +26,27 @@
 export default {
   name: 'GenerationCard',
   props: {
-    generation: {
-      type: Object,
-      default: () => {}
+    generationName: {
+      type: String,
+      default: ''
+    }
+  },
+  computed: {
+    generation () {
+      return this.$store.getters.generationByName(this.generationName)
+    },
+    hasGames () {
+      return this.generation.games && this.generation.games.length
     }
   },
   methods: {
     goToGeneration (generationName) {
-      this.$router.push({
-        name: 'generation',
-        params: { generationName }
-      })
+      if (this.hasGames) {
+        this.$router.push({
+          name: 'generation',
+          params: { generationName }
+        })
+      }
     }
   }
 }

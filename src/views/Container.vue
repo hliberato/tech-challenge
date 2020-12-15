@@ -4,7 +4,6 @@
       <pokemon-icon
         :size="isAtHome ? 'large' : 'small'"
         :class="isAtHome ? 'mr-24' : 'mr-12'"
-        name="pokeball"
       />
       <h1>
         PokeGames <br v-if="isAtHome"> Generations

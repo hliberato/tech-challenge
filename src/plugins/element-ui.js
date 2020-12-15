@@ -16,7 +16,12 @@ import {
   Col,
   Breadcrumb,
   BreadcrumbItem,
-  Link
+  Link,
+  Table,
+  TableColumn,
+  Input,
+  Dialog,
+  Pagination
 } from 'element-ui'
 
 locale.use(lang)
@@ -35,3 +40,8 @@ Vue.use(Col)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
 Vue.use(Link)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Input)
+Vue.use(Dialog)
+Vue.use(Pagination)

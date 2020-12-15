@@ -9,6 +9,10 @@ import store from './store'
 import './plugins/axios'
 import './plugins/element-ui'
 
+// filters
+import './filters/capitalize'
+import './filters/yesAndNo'
+
 // styles
 import './styles/index.scss'
 
