@@ -1,34 +1,46 @@
-# tech-challenge
+<h1 align="center">Welcome to PokeGames Generations!</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="License: MIT License" src="https://img.shields.io/badge/License-MIT License-yellow.svg" />
+  </a>
+</p>
 
-## Project setup
-```
-npm install
-```
+## 🔗 💻 🎉 [Online DEMO](http://pokegames.netlify.app/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Install
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
+```sh
+yarn install
 ```
 
-### Run your end-to-end tests
-```
-npm run test:e2e
+## Start development server
+
+```sh
+yarn serve
 ```
 
-### Lints and fixes files
-```
-npm run lint
+## Build for production
+
+```sh
+yarn build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Run E2E tests
+
+```sh
+yarn test:e2e
+```
+
+## Run Unit tests
+
+```sh
+yarn test:unit
+```
+
+## Author
+
+👤 **Henrique Liberato**
+
+* Github: [@hliberato](https://github.com/hliberato)
+* Website: https://www.linkedin.com/in/henrique-liberato-96a63a31/
