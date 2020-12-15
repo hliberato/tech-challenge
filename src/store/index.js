@@ -14,8 +14,8 @@ export default new Vuex.Store({
       state.generations = generations
     },
     setGenerationGames (state, { generationId, games }) {
-      const generation = state.generations.find(g => g.id === generationId)
       const generationIndex = state.generations.findIndex(g => g.id === generationId)
+      const generation = { ...state.generations.find(g => g.id === generationId) }
       generation.games = games
       Vue.set(state.generations, generationIndex, generation)
     }

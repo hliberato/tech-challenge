@@ -26,17 +26,17 @@
 export default {
   name: 'GenerationCard',
   props: {
-    generationName: {
-      type: String,
-      default: ''
+    generation: {
+      type: Object,
+      default: () => {}
     }
   },
   computed: {
-    generation () {
-      return this.$store.getters.generationByName(this.generationName)
+    games () {
+      return this.generation.games
     },
     hasGames () {
-      return this.generation.games && this.generation.games.length
+      return this.games && this.games.length
     }
   },
   methods: {
