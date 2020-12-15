@@ -66,7 +66,7 @@ export default {
   components: { GamesCard },
   data () {
     return {
-      generation: null,
+      generation: {},
       searchTerm: '',
       dialogVisible: false,
       selectedPokemon: null,
@@ -80,10 +80,10 @@ export default {
   },
   computed: {
     filteredPokemons () {
-      return this.generation.pokemon_species.filter(pokemon => {
+      return this.generation.pokemon_species?.filter(pokemon => {
         this.currentPage = 1
         return !this.searchTerm || pokemon.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-      })
+      }) || []
     },
     pagedPokemons () {
       return this.filteredPokemons.slice((this.currentPage - 1) * 10, this.currentPage * 10)

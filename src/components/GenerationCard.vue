@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     games () {
-      return this.generation.games
+      return this.generation.games || []
     },
     hasGames () {
       return this.games && this.games.length

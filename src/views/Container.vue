@@ -50,6 +50,7 @@ export default {
 <style lang="scss" scoped>
   .container-view {
     &__header {
+        z-index: 1;
         display: flex;
         justify-content: center;
         align-items: center;
