@@ -3,7 +3,7 @@
     <el-header :height="isAtHome ? 'auto' : '60px'" class="container-view__header">
       <pokemon-icon
         :size="isAtHome ? 'large' : 'small'"
-        :class="isAtHome ? 'mr-24' : 'mr-12'"
+        class="container-view__icon"
       />
       <h1>
         PokeGames <br v-if="isAtHome"> Generations
@@ -48,6 +48,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '@/styles/_media.scss';
+
   .container-view {
     &__header {
         z-index: 1;
@@ -56,15 +58,35 @@ export default {
         align-items: center;
       }
     &--home {
+      @include tablet-and-up () {
+        .container-view__icon {
+          margin-right: 2rem;
+        }
+      }
+      @include mobile-only () {
+        .container-view__icon {
+          margin-bottom: 1rem;
+        }
+      }
       .container-view__header {
         font-size: 2rem;
         font-weight:400;
         margin: 8rem 0 4rem;
+        @include mobile-only () {
+          margin: 4rem 0 1rem;
+          flex-direction: column;
+        }
       }
     }
     &--content {
+      .container-view__icon {
+        margin-right: .5rem;
+      }
       .container-view__header {
         box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+        h1 {
+          font-size: 1.3rem !important;
+        }
       }
     }
   }

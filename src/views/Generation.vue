@@ -14,7 +14,7 @@
           {{ scope.row.name | capitalize }}
         </template>
       </el-table-column>
-      <el-table-column align="right" width="340px" min-width="200px">
+      <el-table-column align="right" width="200px" min-width="100px">
         <template slot="header" slot-scope="scope">
           <el-input
             v-model="searchTerm"
@@ -30,9 +30,10 @@
     <el-pagination
       :total="filteredPokemons.length"
       :current-page.sync="currentPage"
+      :pager-count="3"
       class="pt-40 pb-20"
       background
-      layout="prev, pager, next, total"
+      layout="prev, pager, next"
     >
     </el-pagination>
     <el-dialog

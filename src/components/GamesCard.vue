@@ -4,7 +4,7 @@
       <h3>
         Pokemon {{ game.name | capitalize }}
       </h3>
-      <pokemon-icon randon-icon />
+      <pokemon-icon random-icon />
     </div>
   </el-card>
 </template>

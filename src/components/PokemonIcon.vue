@@ -19,8 +19,8 @@ export default {
       default: 'medium',
       validator: (s) => ['large', 'medium', 'small', 'mini'].includes(s)
     },
-    randonIcon: Boolean,
-    randonPokemon: Boolean
+    randomIcon: Boolean,
+    randomPokemon: Boolean
   },
   data () {
     return {
@@ -65,9 +65,9 @@ export default {
       return require(`@/assets/icons/${this.name || this.getSortedIcon}.svg`)
     },
     getSortedIcon () {
-      if (this.randonIcon) {
+      if (this.randomIcon) {
         return this.icons[Math.floor(Math.random() * this.icons.length)]
-      } else if (this.randonPokemon) {
+      } else if (this.randomPokemon) {
         return this.pokemons[Math.floor(Math.random() * this.pokemons.length)]
       } else {
         return 'pokeball'

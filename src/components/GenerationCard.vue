@@ -17,7 +17,7 @@
         <p>New pokemons: {{ generation.pokemon_species.length }} </p>
         <p>Total pokemons: {{ generation.total_pokemons }}</p>
       </span>
-      <pokemon-icon randon-pokemon />
+      <pokemon-icon random-pokemon />
     </div>
   </el-card>
 </template>

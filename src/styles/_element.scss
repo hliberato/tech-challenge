@@ -1,12 +1,3 @@
-.el-container {
-  height: 100vh;
-}
-
-.el-footer {
-  background-color: $--background-color-base;
-  line-height: 60px;
-}
-
 .el-loading-spinner .path {
   stroke: #d60808;
 }
@@ -24,4 +15,8 @@
 
 .el-pagination {
   text-align: center;
+}
+
+.el-dialog {
+  min-width: 260px;
 }
